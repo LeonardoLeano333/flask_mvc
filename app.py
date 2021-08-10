@@ -1,32 +1,12 @@
-import os
-
 from flask import Flask
+from mvc_example.views.mvc_views import mvc_blueprint
 
+app = Flask(__name__)
 
-def create_app(test_config=None):
-    # create and configure the app
-    app = Flask(__name__, instance_relative_config=True)
-    app.config.from_mapping(
-        SECRET_KEY='dev',
-        DATABASE=os.path.join(app.instance_path, 'flaskr.sqlite'),
-    )
+app.register_blueprint(mvc_blueprint, url_prefix="/mvc-example")
 
-    if test_config is None:
-        # load the instance config, if it exists, when not testing
-        app.config.from_pyfile('config.py', silent=True)
-    else:
-        # load the test config if passed in
-        app.config.from_mapping(test_config)
+# TODO: remove this when more mature
+@app.route("/")
+def hello_world():
+    return f"<p>Hello, World!</p>"
 
-    # ensure the instance folder exists
-    try:
-        os.makedirs(app.instance_path)
-    except OSError:
-        pass
-
-    # a simple page that says hello
-    @app.route('/hello')
-    def hello():
-        return 'Hello, World!'
-
-    return app
