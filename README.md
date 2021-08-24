@@ -1,0 +1,5 @@
+# Runing
+
+```
+python app.py
+```

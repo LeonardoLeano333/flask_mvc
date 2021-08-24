@@ -10,3 +10,5 @@ app.register_blueprint(mvc_blueprint, url_prefix="/mvc-example")
 def hello_world():
     return f"<p>Hello, World!</p>"
 
+if __name__ == "__main__":
+    app.run()
