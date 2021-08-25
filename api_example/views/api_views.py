@@ -1,6 +1,6 @@
 from flask import Blueprint, request
 from marshmallow import ValidationError
-from mvc_example.controler.schemas.api_schemas import HelloAPISchema
+from api_example.controler.schemas.api_schemas import HelloAPISchema
 
 api_blueprint = Blueprint('api_example', __name__)
 
