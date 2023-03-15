@@ -7,7 +7,7 @@ python app.py
 # Running with docker
 
 ```
-docker build -t flask-mvc .
+docker build --no-cache -t flask-mvc .
 ```
 
 ```
